@@ -1,6 +1,6 @@
 module.exports = async function HandleMessage(context) {
-    const message = context.event.text;
-    if (message){
+    if (context.event.isText){
+        const message = context.event.text;
         if (message === 'covid'){
             await context.sendText('Data Covid');
         } else {
