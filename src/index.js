@@ -1,12 +1,10 @@
 const { router, line } = require('bottender/router');
-const echoController = require('./controllers/echo');
-const covidController = require('./controllers/covid');
+const textController = require('./controllers/text');
 const anyController = require('./controllers/any');
 
 module.exports = async function App() {
   return router([
-    line(['Covid','covid'],covidController),
-    line.message(echoController),
+    line.message(textController),
     line.any(anyController)
   ])
 }
