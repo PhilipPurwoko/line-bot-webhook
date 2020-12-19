@@ -11,16 +11,22 @@ module.exports = async function HandleMessage(context) {
     if (context.event.isText){
         const message = context.event.text;
         if (message === 'covid'){
-            getAxios('https://covid19.mathdro.id/api/countries/Indonesia').then(stat=>{
-                console.log('Covid message')
-                const json = flex(
-                    new Date(stat.lastUpdate),
-                    parseInt(stat.confirmed.value),
-                    parseInt(stat.recovered.value),
-                    parseInt(stat.deaths.value)
-                )
-                console.log(json)
-                await context.sendFlex('Statistik Covid 19 Indonesia',json)
+            await context.sendFlex('Statistik Covid 19 Indonesia',{
+                type: 'bubble',
+                body: {
+                    type: 'box',
+                    layout: 'horizontal',
+                    contents: [
+                        {
+                            type: 'text',
+                            text: 'Hello,',
+                        },
+                        {
+                            type: 'text',
+                            text: 'World!',
+                        },
+                    ],
+                },
             })
         } else {
             console.log(`Your Message : ${message}`)
