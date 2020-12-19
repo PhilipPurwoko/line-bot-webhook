@@ -1,101 +1,124 @@
-module.exports = (tanggal_hari_ini,jumlah_total_positif,jumlah_total_sembuh,jumlah_total_meninggal)=>{
-    return {
-        "type":"bubble",
-        "body":{
-            "type":"box",
-            "layout":"vertical",
-            "contents":[
-                {
-                    "type":"text",
-                    "text":"Data Covid19 Indonesia",
-                    "weight":"bold",
-                    "size":"xl",
-                    "align":"center"
-                },
-                {
-                    "type":"box",
-                    "layout":"vertical",
-                    "contents":[
-                        {
-                            "type":"text",
-                            "text":tanggal_hari_ini
-                        }
-                    ],
-                    "alignItems":"center"
-                },
-                {
-                    "type":"box",
-                    "layout":"vertical",
-                    "margin":"lg",
-                    "spacing":"sm",
-                    "contents":[
-                        {
-                            "type":"box",
-                            "layout":"baseline",
-                            "spacing":"sm",
-                            "contents":[
-                                {
-                                    "type":"text",
-                                    "text":"Total Positif",
-                                    "color":"#aaaaaa",
-                                    "size":"sm"
-                                    // "flex":4
-                                },
-                                {
-                                    "type":"text",
-                                    "text":jumlah_total_positif,
-                                    "wrap":true,
-                                    "color":"#666666",
-                                    "size":"sm"
-                                    // "flex":4
-                                }
-                            ]
-                        },
-                        {
-                            "type":"box",
-                            "layout":"baseline",
-                            "spacing":"sm",
-                            "contents":[
-                                {
-                                    "type":"text",
-                                    "text":"Total Sembuh",
-                                    "color":"#aaaaaa",
-                                    "size":"sm"
-                                    // "flex":4
-                                },
-                                {
-                                    "type":"text",
-                                    "text":jumlah_total_sembuh,
-                                    "wrap":true,
-                                    "color":"#666666",
-                                    "size":"sm"
-                                    // "flex":4
-                                }
-                            ]
-                        },
-                        {
-                            "type":"box",
-                            "layout":"baseline",
-                            "contents":[
-                                {
-                                    "type":"text",
-                                    "text":"Total Meninggal",
-                                    // "flex":4,
-                                    "size":"sm",
-                                    "color":"#aaaaaa"
-                                },
-                                {
-                                    "type":"text",
-                                    "text":jumlah_total_meninggal,
-                                    // "flex":4,
-                                    "size":"sm",
-                                    "color":"#666666"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
+module.exports = {
+    "type": "bubble",
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "action": {
+            "type": "uri",
+            "label": "Action",
+            "uri": "https://linecorp.com"
+        },
+        "contents": [
+            {
+                "type": "text",
+                "text": "Data Covid 19 Indonesia",
+                "weight": "bold",
+                "size": "xl",
+                "contents": []
+            },
+            {
+                "type": "text",
+                "text": "20 Desember 2020",
+                "size": "md",
+                "color": "#AAAAAA",
+                "align": "center",
+                "wrap": true,
+                "contents": []
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "Total Positif",
+                                "weight": "bold",
+                                "color": "#F4B400",
+                                "margin": "sm",
+                                "contents": []
+                            },
+                            {
+                                "type": "text",
+                                "text": "600000",
+                                "size": "md",
+                                "color": "#AAAAAA",
+                                "align": "end",
+                                "contents": []
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "Total Sembuh",
+                                "weight": "bold",
+                                "color": "#0F9D58",
+                                "flex": 0,
+                                "margin": "sm",
+                                "contents": []
+                            },
+                            {
+                                "type": "text",
+                                "text": "400000",
+                                "size": "md",
+                                "color": "#AAAAAA",
+                                "align": "end",
+                                "contents": []
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "Total Meninggal",
+                                "weight": "bold",
+                                "color": "#DB4437",
+                                "margin": "sm",
+                                "contents": []
+                            },
+                            {
+                                "type": "text",
+                                "text": "10000",
+                                "size": "md",
+                                "color": "#AAAAAA",
+                                "align": "end",
+                                "contents": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "Ayo patuhi protokol kesehatan dan putus rantai penularan Covid !",
+                        "align": "center",
+                        "wrap": true,
+                        "contents": []
+                    }
+                ]
+            }
+        ]
     }
 }
