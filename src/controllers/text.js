@@ -12,14 +12,15 @@ module.exports = async function HandleMessage(context) {
         if (message === 'covid'){
             const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
             const data = await response.data;
-            console.log(data)
-            const full = flex(
+            const flexMessage = flex(
                 data.lastUpdate,
                 data.confirmed.value,
                 data.recovered.value,
                 data.deaths.value
             )
-            await context.sendFlex('Statistik Covid 19 Indonesia',full)
+            
+            // await context.sendFlex('Statistik Covid 19 Indonesia',full)
+            await context.sendText(JSON.stringify(flexMessage))
         } else {
             console.log(`Your Message : ${message}`)
             await context.sendText(`Your Message : ${message}`);
