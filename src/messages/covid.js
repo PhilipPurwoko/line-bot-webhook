@@ -5,11 +5,6 @@ module.exports = (tanggal, positif, sembuh, meninggal) => {
             "type": "box",
             "layout": "vertical",
             "spacing": "md",
-            "action": {
-                "type": "uri",
-                "label": "Action",
-                "uri": "https://linecorp.com"
-            },
             "contents": [
                 {
                     "type": "text",

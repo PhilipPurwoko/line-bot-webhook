@@ -14,13 +14,13 @@ module.exports = async function HandleMessage(context) {
             const data = await response.data;
             const flexMessage = flex(
                 data.lastUpdate,
-                data.confirmed.value,
-                data.recovered.value,
-                data.deaths.value
+                data.confirmed.value.toString(),
+                data.recovered.value.toString(),
+                data.deaths.value.toString()
             )
-            
-            // await context.sendFlex('Statistik Covid 19 Indonesia',full)
-            await context.sendText(JSON.stringify(flexMessage))
+
+            await context.sendFlex('Statistik Covid 19 Indonesia',flexMessage)
+            // await context.sendText(JSON.stringify(flexMessage))
         } else {
             console.log(`Your Message : ${message}`)
             await context.sendText(`Your Message : ${message}`);
