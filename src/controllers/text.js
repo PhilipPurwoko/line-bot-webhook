@@ -1,4 +1,4 @@
-// const axios = require('axios');
+const axios = require('axios');
 const flex = require('../messages/covid');
 
 // getAxios = async (url) =>{
@@ -10,7 +10,14 @@ module.exports = async function HandleMessage(context) {
     if (context.event.isText){
         const message = context.event.text.toLowerCase();
         if (message === 'covid'){
-            await context.sendFlex('Statistik Covid 19 Indonesia',flex)
+            const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
+            const data = await response.data;
+            await context.sendFlex('Statistik Covid 19 Indonesia',flex(
+                data.lastUpdate,
+                data.confirmed.value,
+                data.recovered.value,
+                data.deaths.value
+            ))
         } else {
             console.log(`Your Message : ${message}`)
             await context.sendText(`Your Message : ${message}`);

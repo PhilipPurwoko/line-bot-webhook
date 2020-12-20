@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = (tanggal,positif,sembuh,meninggal)=>{return {
     "type": "bubble",
     "body": {
         "type": "box",
@@ -19,7 +19,7 @@ module.exports = {
             },
             {
                 "type": "text",
-                "text": "20 Desember 2020",
+                "text": tanggal,
                 "size": "md",
                 "color": "#AAAAAA",
                 "align": "center",
@@ -48,7 +48,7 @@ module.exports = {
                             },
                             {
                                 "type": "text",
-                                "text": "600000",
+                                "text": positif,
                                 "size": "md",
                                 "color": "#AAAAAA",
                                 "align": "end",
@@ -71,7 +71,7 @@ module.exports = {
                             },
                             {
                                 "type": "text",
-                                "text": "400000",
+                                "text": sembuh,
                                 "size": "md",
                                 "color": "#AAAAAA",
                                 "align": "end",
@@ -93,7 +93,7 @@ module.exports = {
                             },
                             {
                                 "type": "text",
-                                "text": "10000",
+                                "text": meninggal,
                                 "size": "md",
                                 "color": "#AAAAAA",
                                 "align": "end",
@@ -121,4 +121,4 @@ module.exports = {
             }
         ]
     }
-}
+}}
