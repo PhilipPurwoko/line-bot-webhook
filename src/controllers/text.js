@@ -8,17 +8,17 @@ module.exports = async function HandleMessage(context) {
         if (message === 'data'){
             const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
             const data = await response.data;
-            const flexMessage = flex(
+            const flexData = flex(
                 data.lastUpdate,
                 data.confirmed.value.toString(),
                 data.recovered.value.toString(),
                 data.deaths.value.toString()
             )
 
-            await context.sendFlex('Statistik Covid 19 Indonesia',flexMessage)
+            await context.sendFlex('Statistik Covid 19 Indonesia',flexData)
         } else {
-            const menu = JSON.parse(fs.readFileSync('../messages/menu.json','utf-8'))
-            await context.sendText(`Your Message : ${message}`);
+            const flexMenu = JSON.parse(fs.readFileSync('../messages/menu.json','utf-8'))
+            await context.sendFlex('Menu Utama Pada Bot',flexMenu)
         }
     } else {
         console.log('Non text message')
