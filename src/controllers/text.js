@@ -1,6 +1,8 @@
 const axios = require('axios');
 const getFlex = require('../messages/covid');
 const flexMenu = require('../messages/menu');
+const flexInfo = require('../messages/info');
+const flexProtokol = require('../messages/protokol');
 
 // const readFile = require('../utils/readfile');
 // const path = require('path');
@@ -19,10 +21,13 @@ module.exports = async function HandleMessage(context) {
                 data.recovered.value.toString(),
                 data.deaths.value.toString()
             )
-
-            await context.sendFlex('Statistik Covid 19 Indonesia',flexData)
+            await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
+        } else if (message == 'info'){
+            await context.sendFlex('Informasi Covid',flexInfo);
+        } else if (message == 'protokol'){
+            await context.sendFlex('Protokol Kesehatan Covid',flexProtokol);
         } else {
-            await context.sendFlex('Menu Utama Pada Bot',flexMenu)
+            await context.sendFlex('Menu Utama Pada Bot',flexMenu);
         }
     } else {
         console.log('Non text message')
