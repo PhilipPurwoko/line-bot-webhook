@@ -1,6 +1,10 @@
 const axios = require('axios');
 const flex = require('../messages/covid');
-const fs = require('fs');
+
+const readFile = require('../utils/readfile');
+const path = require('path');
+const filepath = path.join(path.dirname(process.mainModule.filename),'src','messages','menu.json');
+
 
 module.exports = async function HandleMessage(context) {
     if (context.event.isText){
@@ -17,7 +21,7 @@ module.exports = async function HandleMessage(context) {
 
             await context.sendFlex('Statistik Covid 19 Indonesia',flexData)
         } else {
-            const flexMenu = JSON.parse(fs.readFileSync('../messages/menu.json','utf-8'))
+            const flexMenu = await readFile(filepath)
             await context.sendFlex('Menu Utama Pada Bot',flexMenu)
         }
     } else {
