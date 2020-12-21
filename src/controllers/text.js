@@ -1,15 +1,11 @@
 const axios = require('axios');
 const flex = require('../messages/covid');
-
-// getAxios = async (url) =>{
-//     response = await axios.get(url)
-//     return response.data
-// }
+const fs = require('fs');
 
 module.exports = async function HandleMessage(context) {
     if (context.event.isText){
         const message = context.event.text.toLowerCase();
-        if (message === 'covid'){
+        if (message === 'data'){
             const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
             const data = await response.data;
             const flexMessage = flex(
@@ -20,9 +16,8 @@ module.exports = async function HandleMessage(context) {
             )
 
             await context.sendFlex('Statistik Covid 19 Indonesia',flexMessage)
-            // await context.sendText(JSON.stringify(flexMessage))
         } else {
-            console.log(`Your Message : ${message}`)
+            const menu = JSON.parse(fs.readFileSync('../messages/menu.json','utf-8'))
             await context.sendText(`Your Message : ${message}`);
         }
     } else {
