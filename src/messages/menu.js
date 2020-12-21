@@ -1,4 +1,4 @@
-{
+module.exports = {
     "type": "bubble",
     "body": {
         "type": "box",

@@ -1,9 +1,10 @@
 const axios = require('axios');
-const flex = require('../messages/covid');
+const getFlex = require('../messages/covid');
+const flexMenu = require('../messages/menu');
 
-const readFile = require('../utils/readfile');
-const path = require('path');
-const filepath = path.join(path.dirname(process.mainModule.filename),'src','messages','menu.json');
+// const readFile = require('../utils/readfile');
+// const path = require('path');
+// const filepath = path.join(path.dirname(process.mainModule.filename),'src','messages','menu.json');
 
 
 module.exports = async function HandleMessage(context) {
@@ -12,7 +13,7 @@ module.exports = async function HandleMessage(context) {
         if (message === 'data'){
             const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
             const data = await response.data;
-            const flexData = flex(
+            const flexData = getFlex(
                 data.lastUpdate,
                 data.confirmed.value.toString(),
                 data.recovered.value.toString(),
@@ -21,7 +22,6 @@ module.exports = async function HandleMessage(context) {
 
             await context.sendFlex('Statistik Covid 19 Indonesia',flexData)
         } else {
-            const flexMenu = await readFile(filepath)
             await context.sendFlex('Menu Utama Pada Bot',flexMenu)
         }
     } else {
