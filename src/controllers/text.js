@@ -3,6 +3,17 @@ const logPesan = require('../utils/logPesan');
 const Respond = require('./respond');
 
 
+const axios = require('axios');
+
+// Import all available messages
+const getCovidFlex = require('../messages/covid');
+const flexMenu = require('../messages/menu');
+const flexInfo = require('../messages/info');
+const flexProtokol = require('../messages/protokol');
+const tidakDimengerti = require('../messages/tidakDimengerti');
+const hanyaTeks = require('../messages/hanyaTeks');
+
+
 module.exports = async function HandleMessage(context) {
     if (context.event.isText){
         const message = context.event.text.toLowerCase();
@@ -30,27 +41,35 @@ module.exports = async function HandleMessage(context) {
             if (ratioData >= 0.7 || ratioCovid >= 0.7){
                 console.log(`Data Similarity : ${ratioData}`);
                 console.log(`Covid Similarity : ${ratioCovid}`);
-                if (ratioCovid > ratioData){
+                if (ratioCovid < ratioData){
                     await context.sendText('Mungkin maksud Anda "Covid"');
                 } else {
                     await context.sendText('Mungkin maksud Anda "Data"');
                 }
-                Respond.data(context);
+                const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
+                const data = await response.data;
+                const flexData = getCovidFlex(
+                    data.lastUpdate,
+                    data.confirmed.value.toString(),
+                    data.recovered.value.toString(),
+                    data.deaths.value.toString()
+                )
+                await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
             } else if (ratioMenu >= 0.7){
                 await context.sendText('Mungkin maksud Anda "Menu"');
-                Respond.menu(context);
+                await context.sendFlex('Menu Utama Pada Bot',flexMenu);
             } else if (ratioInfo >= 0.7){
                 await context.sendText('Mungkin maksud Anda "Info"');
-                Respond.info(context);
+                await context.sendFlex('Informasi Covid',flexInfo);
             } else if (ratioProtokol >= 0.7){
                 await context.sendText('Mungkin maksud Anda "Protokol"');
-                Respond.protokol(context);
+                await context.sendFlex('Protokol Kesehatan Covid',flexProtokol);
             } else {
-                Respond.tidakMengerti(context);
+                await context.sendFlex('Maaf, pesan tidak dapat dimengerti',tidakDimengerti);
             }
         }
     } else {
         logPesan('Non text message');
-        Respond.hyTeks(context);
+        await context.sendFlex('Maaf, kami hanya bisa memproses pesan teks',hanyaTeks);
     }
 }
