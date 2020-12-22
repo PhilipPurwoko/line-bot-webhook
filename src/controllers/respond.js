@@ -1,6 +1,4 @@
-const axios = require('axios');
 // Import all available messages
-const getCovidFlex = require('../messages/covid');
 const flexMenu = require('../messages/menu');
 const flexInfo = require('../messages/info');
 const flexProtokol = require('../messages/protokol');

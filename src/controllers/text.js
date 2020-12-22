@@ -1,6 +1,8 @@
 const similarity = require('../utils/similarity');
 const logPesan = require('../utils/logPesan');
 const Respond = require('./respond');
+const axios = require('axios');
+const getCovidFlex = require('../messages/covid');
 
 
 module.exports = async function HandleMessage(context) {
