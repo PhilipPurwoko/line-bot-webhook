@@ -8,11 +8,12 @@ const flexProtokol = require('../messages/protokol');
 const tidakDimengerti = require('../messages/tidakDimengerti');
 const hanyaTeks = require('../messages/hanyaTeks');
 
+
 module.exports = class Respond{
-    menu(context){
+    static async menu(context){
         return await context.sendFlex('Menu Utama Pada Bot',flexMenu);
     }
-    data(context){
+    static async data(context){
         const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
         const data = await response.data;
         const flexData = getCovidFlex(
@@ -23,16 +24,16 @@ module.exports = class Respond{
         )
         return await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
     }
-    info(context){
+    static async info(context){
         return await context.sendFlex('Informasi Covid',flexInfo);
     }
-    protokol(context){
+    static async protokol(context){
         return await context.sendFlex('Protokol Kesehatan Covid',flexProtokol);
     }
-    tidakMengerti(context){
+    static async tidakMengerti(context){
         return await context.sendFlex('Maaf, pesan tidak dapat dimengerti',tidakDimengerti);
     }
-    hyTeks(context){
+    static async hyTeks(context){
         return await context.sendFlex('Maaf, kami hanya bisa memproses pesan teks',hanyaTeks);
     }
 }

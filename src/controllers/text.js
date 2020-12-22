@@ -1,7 +1,6 @@
 const similarity = require('../utils/similarity');
 const logPesan = require('../utils/logPesan');
 const Respond = require('./respond');
-const respond = new Respond();
 
 
 module.exports = async function HandleMessage(context) {
@@ -9,16 +8,16 @@ module.exports = async function HandleMessage(context) {
         const message = context.event.text.toLowerCase();
         if (message === 'data' || message == 'covid'){
             logPesan(message);
-            respond.data(context)
+            Respond.data(context)
         } else if (message == 'info'){
             logPesan(message);
-            respond.info(context);
+            Respond.info(context);
         } else if (message == 'protokol'){
             logPesan(message);
-            respond.protokol(context);
+            Respond.protokol(context);
         } else if (message == 'menu'){
             logPesan(message);
-            respond.menu(context);
+            Respond.menu(context);
         } else {
             logPesan(message);
             // Find message similarity ratio
@@ -33,19 +32,19 @@ module.exports = async function HandleMessage(context) {
                 console.log(`Covid Similarity : ${ratioCovid}`);
                 // Send 2 response to user
                 await context.sendText('Mungkin maksud Anda "Covid"')
-                respond.data(context);
+                Respond.data(context);
             } else if (ratioMenu >= 0.7){
-                respond.menu(context);
+                Respond.menu(context);
             } else if (ratioInfo >= 0.7){
-                respond.info(context);
+                Respond.info(context);
             } else if (ratioProtokol >= 0.7){
-                respond.protokol(context);
+                Respond.protokol(context);
             } else {
-                respond.tidakMengerti(context);
+                Respond.tidakMengerti(context);
             }
         }
     } else {
         logPesan('Non text message');
-        respond.hyTeks(context);
+        Respond.hyTeks(context);
     }
 }
