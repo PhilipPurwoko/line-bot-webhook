@@ -3,7 +3,7 @@ function threeDot(value){
 }
 
 
-module.exports = (tanggalRaw, positifRaw, sembuh, meninggal) => {
+module.exports = (tanggalRaw, positifRaw, sembuhRaw, meninggalRaw) => {
     // Format raw datetime string
     const date_time = tanggalRaw.split('T');
     const date = date_time[0].split('-').reverse().join('-')
