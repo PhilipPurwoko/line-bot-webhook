@@ -43,6 +43,14 @@ module.exports = async function HandleMessage(context) {
             const ratioCovid = similarity(message, 'covid');
             console.log(ratioCovid, typeof(ratioCovid))
             if (ratioCovid >= 0.7){
+                const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
+                const data = await response.data;
+                const flexData = getCovidFlex(
+                    data.lastUpdate,
+                    data.confirmed.value.toString(),
+                    data.recovered.value.toString(),
+                    data.deaths.value.toString()
+                )
                 await context.sendText('Mungkin maksud Anda "Covid"')
                 await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
             } else {
