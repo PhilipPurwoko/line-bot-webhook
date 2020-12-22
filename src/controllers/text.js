@@ -8,7 +8,7 @@ module.exports = async function HandleMessage(context) {
         const message = context.event.text.toLowerCase();
         if (message === 'data' || message == 'covid'){
             logPesan(message);
-            Respond.data(context)
+            Respond.data(context);
         } else if (message == 'info'){
             logPesan(message);
             Respond.info(context);
@@ -28,16 +28,22 @@ module.exports = async function HandleMessage(context) {
             const ratioProtokol = similarity(message, 'protokol');
 
             if (ratioData >= 0.7 || ratioCovid >= 0.7){
-                console.log(`Data Similarity : ${ratioData}`)
+                console.log(`Data Similarity : ${ratioData}`);
                 console.log(`Covid Similarity : ${ratioCovid}`);
-                // Send 2 response to user
-                await context.sendText('Mungkin maksud Anda "Covid"')
+                if (ratioCovid > ratioData){
+                    await context.sendText('Mungkin maksud Anda "Covid"');
+                } else {
+                    await context.sendText('Mungkin maksud Anda "Data"');
+                }
                 Respond.data(context);
             } else if (ratioMenu >= 0.7){
+                await context.sendText('Mungkin maksud Anda "Menu"');
                 Respond.menu(context);
             } else if (ratioInfo >= 0.7){
+                await context.sendText('Mungkin maksud Anda "Info"');
                 Respond.info(context);
             } else if (ratioProtokol >= 0.7){
+                await context.sendText('Mungkin maksud Anda "Protokol"');
                 Respond.protokol(context);
             } else {
                 Respond.tidakMengerti(context);
