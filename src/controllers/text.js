@@ -38,8 +38,6 @@ module.exports = async function HandleMessage(context) {
             const ratioProtokol = similarity(message, 'protokol');
 
             if (ratioData >= 0.7 || ratioCovid >= 0.7){
-                console.log(`Data Similarity : ${ratioData}`);
-                console.log(`Covid Similarity : ${ratioCovid}`);
                 if (ratioCovid < ratioData){
                     await context.sendText('Mungkin maksud Anda "Covid"');
                 } else {

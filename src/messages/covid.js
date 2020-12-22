@@ -1,4 +1,9 @@
-module.exports = (tanggal, positif, sembuh, meninggal) => {
+module.exports = (tanggalRaw, positif, sembuh, meninggal) => {
+    const date_time = tanggalRaw.split('T');
+    const date = date_time[0].split('-').reverse().join('-')
+    const time = date_time[1].split(':').slice(0,2).join(':')
+    const tanggal = `Tanggal ${date} Jam ${time}`
+    
     return {
         "type": "bubble",
         "body": {
