@@ -8,7 +8,15 @@ module.exports = async function HandleMessage(context) {
         const message = context.event.text.toLowerCase();
         if (message === 'data' || message == 'covid'){
             logPesan(message);
-            await Respond.data(context);
+            const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
+            const data = await response.data;
+            const flexData = getCovidFlex(
+                data.lastUpdate,
+                data.confirmed.value.toString(),
+                data.recovered.value.toString(),
+                data.deaths.value.toString()
+            )
+            await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
         } else if (message == 'info'){
             logPesan(message);
             await Respond.info(context);
@@ -35,7 +43,16 @@ module.exports = async function HandleMessage(context) {
                 } else {
                     await context.sendText('Mungkin maksud Anda "Data"');
                 }
-                await Respond.data(context);
+                
+                const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
+                const data = await response.data;
+                const flexData = getCovidFlex(
+                    data.lastUpdate,
+                    data.confirmed.value.toString(),
+                    data.recovered.value.toString(),
+                    data.deaths.value.toString()
+                )
+                await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
             } else if (ratioMenu >= 0.7){
                 await context.sendText('Mungkin maksud Anda "Menu"');
                 await Respond.menu(context);
