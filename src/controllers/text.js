@@ -40,9 +40,9 @@ module.exports = async function HandleMessage(context) {
             await context.sendFlex('Menu Utama Pada Bot',flexMenu);
         } else {
             logPesan(message);
-            const similarPercent = similarity(message, 'covid');
-            console.log(similarPercent, typeof(similarPercent))
-            if (similarPercent >= 70.0){
+            const ratioCovid = similarity(message, 'covid');
+            console.log(ratioCovid, typeof(ratioCovid))
+            if (ratioCovid >= 0.7){
                 await context.sendText('Mungkin maksud Anda "Covid"')
                 await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
             } else {
