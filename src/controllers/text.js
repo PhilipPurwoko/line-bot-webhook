@@ -18,7 +18,7 @@ function logPesan(pesan){
 module.exports = async function HandleMessage(context) {
     if (context.event.isText){
         const message = context.event.text.toLowerCase();
-        if (message === 'data'){
+        if (message === 'data' || message == 'covid'){
             logPesan(message);
             const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
             const data = await response.data;
@@ -40,7 +40,9 @@ module.exports = async function HandleMessage(context) {
             await context.sendFlex('Menu Utama Pada Bot',flexMenu);
         } else {
             logPesan(message);
-            if (similarity(message, 'covid') > 70.0){
+            const similarPercent = similarity(message, 'covid');
+            console.log(similarPercent, typeof(similarPercent))
+            if (similarPercent >= 70.0){
                 await context.sendText('Mungkin maksud Anda "Covid"')
                 await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
             } else {
