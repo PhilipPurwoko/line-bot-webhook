@@ -1,5 +1,8 @@
 const axios = require('axios');
-const getFlex = require('../messages/covid');
+const similarity = require('../utils/similarity');
+
+// Import all available messages
+const getCovidFlex = require('../messages/covid');
 const flexMenu = require('../messages/menu');
 const flexInfo = require('../messages/info');
 const flexProtokol = require('../messages/protokol');
@@ -19,7 +22,7 @@ module.exports = async function HandleMessage(context) {
             logPesan(message);
             const response = await axios.get('https://covid19.mathdro.id/api/countries/Indonesia');
             const data = await response.data;
-            const flexData = getFlex(
+            const flexData = getCovidFlex(
                 data.lastUpdate,
                 data.confirmed.value.toString(),
                 data.recovered.value.toString(),
@@ -37,7 +40,12 @@ module.exports = async function HandleMessage(context) {
             await context.sendFlex('Menu Utama Pada Bot',flexMenu);
         } else {
             logPesan(message);
-            await context.sendFlex('Maaf, pesan tidak dapat dimengerti',tidakDimengerti);
+            if (similarity(message, 'covid') > 70.0){
+                await context.sendText('Mungkin maksud Anda "Covid"')
+                await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
+            } else {
+                await context.sendFlex('Maaf, pesan tidak dapat dimengerti',tidakDimengerti);
+            }
         }
     } else {
         logPesan('Non text message');

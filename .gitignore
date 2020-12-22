@@ -1,7 +1,9 @@
 # Taken from https://github.com/github/gitignore/blob/master/Node.gitignore
 
+# Custom ignore
 builder
 testing.js
+src/messages/constructor.js
 
 # Logs
 logs
