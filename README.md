@@ -1,62 +1,47 @@
-This project was bootstrapped with
-[Bottender](https://github.com/Yoctol/bottender) init script.
+## Tentang Bot
+Dapatkan informasi terkini Covid-19 di Indonesia langsung melalui LINE. Tersedia dalam waktu 24 jam penuh secara GRATIS.
 
-## Sending Feedback
+## Fitur bot :
+1. Menampilkan apa itu Covid-19 secara garis besar
+2. Menampilkan protokol kesehatan untuk memutus penularan
+3. Menampilkan data statistik Covid-19
 
-Always feel free to open an issue to
-[Bottender](https://github.com/Yoctol/bottender/issues) repository.
+## Cara Menggunakan :
+Anda dapat menggunakan bot dengan mengirim pesan.
+- `Cara Pakai` atau `Panduan` untuk menampilkan panduan
+- `Menu` untuk menampilkan menu utama
+- `Info` untuk menampilkan ikhtisar Covid-19
+- `Protokol` untuk menampilkan informasi protokol kesehatan
+- `Data` atau `Covid` untuk menampilkan data statistik Covid
 
-## Configuration
+## Tentang Pembuat Bot :
+Philip Purwoko, mahasiswa di Universitas Sebelas Maret @philippurwoko
 
-### The `bottender.config.js` File
+## Laporkan Masalah :
+Silakan jelaskan permasalahan yang terjadi pada [halaman berikut](https://github.com/PhilipPurwoko/line-bot-webhook/issues/new)
 
-Bottender configuration file. You can use this file to provide settings for the session store and channels.
+## Konfigurasi
+### `bottender.config.js`
 
-### The `.env` File
+File konfigurasi Bottender. Anda dapat menggunakan file ini untuk menyediakan pengaturan untuk penyimpanan sesi dan saluran.
 
-Bottender utilizes the [dotenv](https://www.npmjs.com/package/dotenv) package to load your environment variables when developing your app.
+### `.env`
 
-To make the bot work, you must put required environment variables into your `.env` file.
+Kami menggunakan dotenv untuk memuat environment variable Anda saat mengembangkan aplikasi. Untuk membuat bot berfungsi, Anda harus memasukkan environment variable yang diperlukan ke dalam file `.env`
 
-## Available Scripts
-
-In the project directory, you can run:
-
+## Scripts
 ### `npm run dev`
 
-Runs the app in development mode.<br>
-The bot will automatically reload if you make changes to the code.<br>
-By default, server runs on [http://localhost:5000](http://localhost:5000) and ngrok runs on [http://localhost:4040](http://localhost:4040).
-
-To run in [Console Mode](https://bottender.js.org/docs/en/the-basics-console-mode), provide the `--console` option:
-
-```sh
-npm run dev -- --console
-yarn dev --console
-```
+Menjalankan aplikasi dalam mode development. Menggunakan nodemon untuk yang dapat melakukan hot reload jika merubah kode. Secara default, server berjalan pada [http://localhost:5000](http://localhost:5000) dan ngrok berjalan pada [http://localhost:4040](http://localhost:4040).
 
 ### `npm start`
 
-Runs the app in production mode.<br>
-By default, server runs on [http://localhost:5000](http://localhost:5000).
-
-To run in [Console Mode](https://bottender.js.org/docs/en/the-basics-console-mode), provide the `--console` option:
-
-```sh
-npm start -- --console
-yarn start --console
-```
+Menjalankan aplikasi dalam mode produksi. Secara default, server berjalan pada [http://localhost:5000](http://localhost:5000).
 
 ### `npm run lint`
 
-Runs the linter rules using [Eslint](https://eslint.org/).
+Menjalankan JS linter menggunakan [Eslint](https://eslint.org/).
 
 ### `npm test`
 
-Runs the test cases using [Jest](https://jestjs.io/).
-
-## Learn More
-
-To learn Bottender, check out the [Bottender documentation](https://bottender.js.org/docs/en/getting-started).
-
-For more examples, see [Bottender examples](https://github.com/Yoctol/bottender/tree/master/examples).
+Menjalankan test cases menggunakan [Jest](https://jestjs.io/).
