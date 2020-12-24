@@ -28,7 +28,7 @@ module.exports = async function HandleMessage(context) {
         } else if (message == 'menu'){
             logPesan(message);
             await Respond.menu(context);
-        } else if (message == 'cara pakai'){
+        } else if (message == 'cara pakai' || message == 'panduan' || message == 'halo' || message == 'test'){
             logPesan(message);
             await Respond.caraPakai(context);
         } else {
