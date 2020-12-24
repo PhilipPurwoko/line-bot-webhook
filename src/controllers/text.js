@@ -28,6 +28,9 @@ module.exports = async function HandleMessage(context) {
         } else if (message == 'menu'){
             logPesan(message);
             await Respond.menu(context);
+        } else if (message == 'cara pakai'){
+            logPesan(message);
+            await Respond.caraPakai(context);
         } else {
             logPesan(message);
             // Find message similarity ratio
@@ -36,6 +39,8 @@ module.exports = async function HandleMessage(context) {
             const ratioMenu = similarity(message, 'menu');
             const ratioInfo = similarity(message, 'info');
             const ratioProtokol = similarity(message, 'protokol');
+            const ratioCaraPakai = similarity(message, 'cara pakai');
+            const ratioPanduan = similarity(message, 'panduan');
 
             if (ratioData >= 0.7 || ratioCovid >= 0.7){
                 if (ratioCovid < ratioData){
@@ -62,6 +67,12 @@ module.exports = async function HandleMessage(context) {
             } else if (ratioProtokol >= 0.7){
                 await context.sendText('Mungkin maksud Anda "Protokol"');
                 await Respond.protokol(context);
+            } else if (ratioCaraPakai >= 0.7){
+                await context.sendText('Mungkin maksud Anda "Cara Pakai"');
+                await Respond.caraPakai(context);
+            } else if (ratioPanduan >= 0.7){
+                await context.sendText('Mungkin maksud Anda "Panduan"');
+                await Respond.caraPakai(context);
             } else {
                 await Respond.tidakMengerti(context);
             }
