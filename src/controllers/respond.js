@@ -42,14 +42,14 @@ module.exports = class Respond{
     static tidakMengerti(context){
         return context.send([{
             type: 'text',
-            text: 'Maaf, pesan tidak dapat dimengerti. Silakan gunakan quick replay untuk menggunakan bot',
+            text: 'Maaf, pesan tidak dapat dimengerti. Kirim pesan "menu" untuk melihat menu yang tersedia atau "panduan" untuk menampilkan panduan penggunaan Bot',
             quickReply,
         }]);
     }
     static hyTeks(context){
         return context.send([{
             type: 'text',
-            text: 'Maaf, kami hanya bisa memproses pesan teks. Silakan gunakan quick replay untuk menggunakan bot',
+            text: 'Maaf, kami hanya bisa memproses pesan teks. Kirim pesan "menu" untuk melihat menu yang tersedia atau "panduan" untuk menampilkan panduan penggunaan Bot',
             quickReply,
         }]);
     }
