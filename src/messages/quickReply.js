@@ -4,7 +4,7 @@ module.exports = {
             type: 'action',
             action: {
                 type: 'message',
-                label: 'Cara Memakai Bot',
+                label: 'Panduan Bot',
                 text: 'Cara Pakai',
             },
         },
@@ -20,7 +20,7 @@ module.exports = {
             type: 'action',
             action: {
                 type: 'message',
-                label: 'Singkat Tentang Covid',
+                label: 'Apa itu Covid',
                 text: 'Info',
             },
         },
@@ -28,8 +28,16 @@ module.exports = {
             type: 'action',
             action: {
                 type: 'message',
-                label: 'Protokol Kesehatan',
+                label: 'Protokol',
                 text: 'Protokol',
+            },
+        },
+        {
+            type: 'action',
+            action: {
+                type: 'message',
+                label: 'Statistik',
+                text: 'Data',
             },
         }
     ],
