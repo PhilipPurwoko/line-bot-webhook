@@ -3,6 +3,7 @@ const logPesan = require('../utils/logPesan');
 const Respond = require('./respond');
 const axios = require('axios');
 const getCovidFlex = require('../messages/covid');
+const quickReply = require('../messages/quickReply');
 
 
 module.exports = async function HandleMessage(context) {
@@ -18,7 +19,12 @@ module.exports = async function HandleMessage(context) {
                 data.recovered.value.toString(),
                 data.deaths.value.toString()
             )
-            await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
+            await context.send([{
+                type: 'flex',
+                altText: 'Statistik Covid 19 Indonesia',
+                contents: flexData,
+                quickReply
+            }])
         } else if (message == 'info'){
             logPesan(message);
             await Respond.info(context);
@@ -57,7 +63,12 @@ module.exports = async function HandleMessage(context) {
                     data.recovered.value.toString(),
                     data.deaths.value.toString()
                 )
-                await context.sendFlex('Statistik Covid 19 Indonesia',flexData);
+                await context.send([{
+                    type: 'flex',
+                    altText: 'Statistik Covid 19 Indonesia',
+                    contents: flexData,
+                    quickReply
+                }])
             } else if (ratioMenu >= 0.7){
                 await context.sendText('Mungkin maksud Anda "Menu"');
                 await Respond.menu(context);

@@ -79,31 +79,31 @@ module.exports = {
                     },
                     {
                         "type": "text",
-                        "text": "- Cara Pakai untuk menampilkan panduan",
+                        "text": '- "Cara Pakai" atau "Panduan" untuk menampilkan panduan',
                         "wrap": true,
                         "contents": []
                     },
                     {
                         "type": "text",
-                        "text": "- Menu untuk menampilkan menu utama",
+                        "text": '- "Menu" untuk menampilkan menu utama',
                         "wrap": true,
                         "contents": []
                     },
                     {
                         "type": "text",
-                        "text": "- Info untuk menampilkan ikhtisar Covid-19",
+                        "text": '- "Info" untuk menampilkan ikhtisar Covid-19',
                         "wrap": true,
                         "contents": []
                     },
                     {
                         "type": "text",
-                        "text": "- Protokol untuk menampilkan informasi protokol kesehatan",
+                        "text": '- "Protokol" untuk menampilkan informasi protokol kesehatan',
                         "wrap": true,
                         "contents": []
                     },
                     {
                         "type": "text",
-                        "text": "- Data atau Covid untuk menampilkan data statistik Covid",
+                        "text": '- "Data" atau "Covid" untuk menampilkan data statistik Covid',
                         "wrap": true,
                         "contents": []
                     },

@@ -49,7 +49,7 @@ module.exports = class Respond{
     static hyTeks(context){
         return context.send([{
             type: 'text',
-            altText: 'Maaf, kami hanya bisa memproses pesan teks. Silakan gunakan quick replay untuk menggunakan bot',
+            text: 'Maaf, kami hanya bisa memproses pesan teks. Silakan gunakan quick replay untuk menggunakan bot',
             quickReply,
         }]);
     }
