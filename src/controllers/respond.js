@@ -35,6 +35,12 @@ module.exports = class Respond{
         }]);
     }
     static caraPakai(context){
-        return context.sendFlex('Panduan Penggunaan Bot',panduan);
+        // return context.sendFlex('Panduan Penggunaan Bot',panduan);
+        return context.send([{
+            type: 'flex',
+            altText: 'Panduan Penggunaan Bot',
+            contents: panduan,
+            quickReply
+        }])
     }
 }
